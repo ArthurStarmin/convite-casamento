@@ -1,0 +1,303 @@
+/* Variáveis de Cores */
+:root {
+    --bg-color: #fcf9f7;
+    --text-dark: #3a3a3a;
+    --rose-gold: #b76e79;
+    --soft-pink: #f4dcd6;
+    --accent-pink: #fdf0f2;
+    --white: #ffffff;
+    --font-title: 'Playfair Display', serif;
+    --font-text: 'Lora', serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body.no-scroll { overflow: hidden; height: 100vh; }
+html { scroll-behavior: smooth; }
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-dark);
+    font-family: var(--font-text);
+    overflow-x: hidden;
+    line-height: 1.6;
+    position: relative;
+}
+
+/* O fundo girassol pastel SÓ aparece no Verso agora */
+body.verso-active::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background-image: url('img/fundo-floral-sutil.png'); 
+    background-size: cover; 
+    background-position: center; 
+    opacity: 0.15;
+    z-index: -1;
+    display: block;
+}
+
+/* Tipografia e Pétalas */
+h1, h2, h3, .names { font-family: var(--font-title); color: var(--rose-gold); font-weight: 400; }
+.pétalas-bg { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 9999; }
+.pétala { position: absolute; top: -80px; display: block; background-image: url('img/pétala.png'); background-size: contain; background-repeat: no-repeat; opacity: 0; animation: caindo linear infinite; }
+@keyframes caindo { 0% { transform: translate(0, 0) rotate(0deg); opacity: 0; } 10% { opacity: 0.8; } 90% { opacity: 0.8; } 100% { transform: translate(100px, 120vh) rotate(360deg); opacity: 0; } }
+.pétala.p1  { left: 2%;  width: 38px; height: 38px; animation-duration: 7s; animation-delay: 0s; }
+.pétala.p2  { left: 12%; width: 48px; height: 48px; animation-duration: 9s; animation-delay: 2s; }
+.pétala.p3  { left: 22%; width: 32px; height: 32px; animation-duration: 6s; animation-delay: 1s; }
+.pétala.p4  { left: 32%; width: 55px; height: 55px; animation-duration: 10s; animation-delay: 3s; }
+.pétala.p5  { left: 42%; width: 42px; height: 42px; animation-duration: 8s; animation-delay: 0.5s; }
+.pétala.p6  { left: 52%; width: 50px; height: 50px; animation-duration: 9.5s; animation-delay: 4s; }
+.pétala.p7  { left: 62%; width: 35px; height: 35px; animation-duration: 7s; animation-delay: 1.5s; }
+.pétala.p8  { left: 72%; width: 52px; height: 52px; animation-duration: 8.5s; animation-delay: 2.5s; }
+.pétala.p9  { left: 82%; width: 30px; height: 30px; animation-duration: 6.5s; animation-delay: 0s; }
+.pétala.p10 { left: 92%; width: 45px; height: 45px; animation-duration: 10.5s; animation-delay: 5s; }
+.pétala.p11 { left: 5%;  width: 40px; height: 40px; animation-duration: 8s; animation-delay: 3.5s; }
+.pétala.p12 { left: 18%; width: 33px; height: 33px; animation-duration: 6.5s; animation-delay: 0.8s; }
+.pétala.p13 { left: 28%; width: 50px; height: 50px; animation-duration: 9s; animation-delay: 4.5s; }
+.pétala.p14 { left: 38%; width: 37px; height: 37px; animation-duration: 7.5s; animation-delay: 1.2s; }
+.pétala.p15 { left: 48%; width: 53px; height: 53px; animation-duration: 10s; animation-delay: 5.5s; }
+.pétala.p16 { left: 58%; width: 34px; height: 34px; animation-duration: 6s; animation-delay: 2.8s; }
+.pétala.p17 { left: 68%; width: 47px; height: 47px; animation-duration: 8.5s; animation-delay: 0.3s; }
+.pétala.p18 { left: 78%; width: 39px; height: 39px; animation-duration: 7s; animation-delay: 3.2s; }
+.pétala.p19 { left: 88%; width: 55px; height: 55px; animation-duration: 9.5s; animation-delay: 1.8s; }
+.pétala.p20 { left: 96%; width: 31px; height: 31px; animation-duration: 6.5s; animation-delay: 4.2s; }
+
+/* =========================================
+   FASE 1 e 2: O ENVELOPE 3D E A CARTA
+   ========================================= */
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(rgba(253, 250, 251, 0.5), rgba(253, 250, 251, 0.5)), url('img/fundo-floral.jpg') no-repeat center center/cover;
+    position: relative;
+    overflow: hidden;
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.hero.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(1.1);
+}
+
+.envelope-wrapper {
+    position: relative;
+    width: 90%;
+    max-width: 500px;
+    height: 320px;
+    margin: 0 auto;
+    perspective: 1000px;
+    z-index: 10;
+}
+
+.envelope {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: #e6ccd0; 
+    border-radius: 10px;
+    box-shadow: 0 20px 50px rgba(183, 110, 121, 0.4);
+}
+
+.envelope-front {
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 100%;
+    background: var(--soft-pink);
+    clip-path: polygon(0 100%, 100% 100%, 100% 0, 50% 60%, 0 0);
+    z-index: 3;
+    border-radius: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.envelope-flap {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 65%;
+    background: #ebd2d7; 
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    transform-origin: top;
+    transition: transform 0.8s ease-in-out;
+    z-index: 4;
+    border-radius: 10px 10px 0 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.letter {
+    position: absolute;
+    bottom: 10px; left: 5%;
+    width: 90%; height: 95%;
+    background: var(--white);
+    border-radius: 10px;
+    z-index: 2;
+    padding: 30px 20px;
+    text-align: center;
+    transition: transform 1.2s ease-in-out 0.6s, z-index 0s linear 1.1s; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--soft-pink);
+}
+
+.letter .names { font-size: 2.2rem; margin-bottom: 5px; color: var(--rose-gold); font-family: var(--font-title); }
+.letter .amp { font-size: 2rem; color: var(--soft-pink); font-style: italic;}
+.letter .date { font-size: 1.1rem; letter-spacing: 2px; margin-bottom: 15px; color: var(--text-dark); font-family: var(--font-text); text-transform: uppercase;}
+.letter .verse { font-size: 0.95rem; color: #777; font-style: italic; max-width: 90%; font-family: var(--font-text);}
+
+.btn-seal {
+    position: absolute;
+    top: 50%; left: 39%;
+    transform: translate(-50%, -50%);
+    width: 110px; height: 110px;
+    background: var(--rose-gold);
+    color: var(--white);
+    border: 3px solid var(--white);
+    border-radius: 50%;
+    font-family: var(--font-title);
+    font-size: 1.1rem;
+    cursor: pointer;
+    z-index: 5;
+    transition: all 0.4s ease;
+    box-shadow: 0 10px 20px rgba(183, 110, 121, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    line-height: 1.2;
+    padding: 10px;
+}
+
+.btn-seal:hover { background-color: #a05c66; transform: translate(-50%, -50%) scale(1.05); }
+
+/* Animações do Envelope Abrindo */
+.envelope-wrapper.open .envelope-flap {
+    transform: rotateX(180deg);
+}
+.envelope-wrapper.open .btn-seal {
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0); 
+}
+.envelope-wrapper.open .letter {
+    transform: translateY(-200px); /* A carta sobe bastante e pára! */
+    z-index: 6; /* Fica acima da frente do envelope para o botão ser clicável */
+}
+
+/* O Novo Botão da Carta */
+.btn-verso {
+    background-color: var(--white);
+    color: var(--rose-gold);
+    border: 2px solid var(--rose-gold);
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-family: var(--font-title);
+    border-radius: 35px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.btn-verso:hover { background-color: var(--rose-gold); color: var(--white); box-shadow: 0 6px 20px rgba(183, 110, 121, 0.2); transform: translateY(-3px); }
+
+.letter-btn {
+    margin-top: 20px;
+    opacity: 0; /* Invisível no começo */
+    pointer-events: none;
+    transition: opacity 1s ease 1.8s; /* Só aparece 1.8s depois, quando a carta já parou de subir */
+}
+
+.envelope-wrapper.open .letter-btn {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* =========================================
+   FASE 3: O VERSO ROLEÁVEL
+   ========================================= */
+main.active-scroll {
+    overflow-y: visible;
+    height: auto;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+main.active-scroll.fade-in { animation: fadeIn 2s ease forwards; }
+
+.floating-menu { position: sticky; top: 20px; z-index: 1000; display: flex; justify-content: center; gap: 20px; background: rgba(255, 255, 255, 0.65); backdrop-filter: blur(12px); padding: 15px 30px; border-radius: 40px; width: fit-content; margin: 20px auto 40px auto; box-shadow: 0 8px 30px rgba(183, 110, 121, 0.15); border: 1px solid rgba(255, 255, 255, 0.9); flex-wrap: wrap; }
+.floating-menu a { text-decoration: none; color: var(--rose-gold); font-family: var(--font-title); font-size: 1.2rem; transition: all 0.3s ease; font-style: italic; }
+.floating-menu a:hover { color: #a05c66; transform: scale(1.08); }
+
+section { padding: 100px 30px; text-align: center; margin: 0 auto; max-width: 1000px; background-color: transparent !important; }
+section h2 { font-size: 3rem; margin-bottom: 120px !important; letter-spacing: 1px; position: relative; }
+section h2::after { content: '♡'; position: absolute; bottom: -60px; left: 50%; transform: translateX(-50%); font-size: 1.5rem; color: var(--soft-pink); opacity: 0.8; }
+
+.timeline { border-left: none; padding-left: 0; display: flex; flex-direction: column; align-items: center; gap: 30px; }
+.timeline-item { max-width: 650px; text-align: center; background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(8px); padding: 40px; border-radius: 40px; border: 1px solid rgba(255, 255, 255, 0.8); box-shadow: 0 10px 30px rgba(183, 110, 121, 0.08); opacity: 0; }
+.timeline-item h3 { font-size: 1.8rem; margin-bottom: 8px; }
+
+.countdown { display: flex; justify-content: center; gap: 15px; flex-wrap: nowrap; }
+.countdown div { background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(8px); border: 2px solid var(--white); border-radius: 50%; width: 100px; height: 100px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; box-shadow: 0 8px 25px rgba(183, 110, 121, 0.1); padding: 0; }
+.countdown span { font-size: 3rem; font-family: var(--font-title); color: var(--rose-gold); }
+.countdown p { font-size: 1.1rem; color: #777; text-transform: uppercase; }
+.countdown-subtitle { margin-top: 45px; font-family: var(--font-title); font-size: 1.6rem; color: var(--rose-gold); font-style: italic; opacity: 0.9; }
+
+.location-details { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 30px; }
+.location p { background: rgba(255, 255, 255, 0.5); backdrop-filter: blur(8px); padding: 12px 25px; border-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.8); margin: 0; }
+.map-container { width: 100%; max-width: 800px; margin: 0 auto 30px auto; border-radius: 20px; overflow: hidden; border: 6px solid var(--white); box-shadow: 0 15px 35px rgba(183, 110, 121, 0.15); }
+.map-container iframe { width: 100%; height: 350px; border: none; display: block; }
+.location .btn { background-color: var(--rose-gold); color: var(--white); border-radius: 35px; text-decoration: none; padding: 15px 30px; font-family: var(--font-title); font-size: 1.1rem; }
+
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; max-width: 900px; margin: 0 auto; justify-items: center; }
+.gallery-grid img { width: 100%; max-width: 260px; height: 340px; object-fit: cover; border-radius: 130px 130px 15px 15px; border: 6px solid var(--white); box-shadow: 0 15px 35px rgba(183, 110, 121, 0.15); transition: transform 0.5s ease, box-shadow 0.5s ease; opacity: 0; }
+.gallery-grid img:hover { transform: scale(1.3) translateY(-10px) !important; box-shadow: 0 30px 60px rgba(183, 110, 121, 0.4) !important; z-index: 50 !important; position: relative; }
+
+.footer-verso { padding: 100px 30px; text-align: center; background-color: var(--accent-pink); border-top: 1px solid var(--soft-pink); margin-top: 50px; }
+.names-footer { font-size: 2.8rem; }
+
+.btn-music { position: fixed; bottom: 25px; right: 25px; background-color: rgba(255, 255, 255, 0.9); color: var(--rose-gold); border: 1px solid var(--rose-gold); padding: 12px 20px; border-radius: 25px; cursor: pointer; font-family: var(--font-text); z-index: 1000; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: all 0.3s ease; }
+.btn-music.hidden { display: none; }
+
+.hidden { display: none !important; }
+.hidden-no-display { display: block; opacity: 0; height: 0; overflow: hidden; pointer-events: none; transform: translateY(100px); }
+
+.fade-in { animation: fadeIn 1.5s ease forwards; }
+.fade-in-up { animation: fadeInUp 1s ease forwards; }
+.fade-in-zoom { animation: fadeInZoom 0.8s ease forwards; }
+
+.pulse-glow { animation: pulse-glow 2.5s infinite alternate; }
+@keyframes pulse-glow { 0% { box-shadow: 0 0 10px rgba(183, 110, 121, 0.2); transform: scale(1); } 100% { box-shadow: 0 0 40px rgba(183, 110, 121, 0.6); transform: scale(1.05); } }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInZoom { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+
+@media (max-width: 768px) {
+    .envelope-wrapper { height: 280px; }
+    .letter .names { font-size: 1.8rem; }
+    .letter .date { font-size: 0.9rem; margin-bottom: 10px; }
+    .letter .verse { font-size: 0.8rem; }
+    .letter-btn { padding: 10px 20px; font-size: 0.9rem; }
+    .btn-seal { width: 90px; height: 90px; font-size: 1rem; }
+    .envelope-wrapper.open .letter { transform: translateY(-160px); }
+    
+    section { padding: 70px 20px; }
+    section h2 { font-size: 2.5rem; margin-bottom: 100px !important; }
+    section h2::after { bottom: -50px; }
+    .timeline { padding-left: 20px; }
+    .btn-verso { padding: 14px 30px; font-size: 1rem; }
+    .countdown { gap: 10px; flex-wrap: wrap; }
+    .countdown div { width: 90px; height: 90px; }
+    .floating-menu { gap: 12px; padding: 12px 20px; top: 10px; }
+    .floating-menu a { font-size: 1rem; }
+    .gallery-grid img:hover { transform: scale(1.15) translateY(-5px) !important; z-index: 50 !important; }
+}
+.hero.fade-out {
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}

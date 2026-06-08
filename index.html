@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convite de Casamento - Arthur & Elayne</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital@0;1&display=swap" rel="stylesheet">
+</head>
+<body class="no-scroll"> <audio id="bg-music" loop>
+        <source src="musica.mp3" type="audio/mpeg">
+    </audio>
+    
+    <div class="pétalas-bg">
+        <span class="pétala p1"></span> <span class="pétala p2"></span> <span class="pétala p3"></span> <span class="pétala p4"></span> <span class="pétala p5"></span>
+        <span class="pétala p6"></span> <span class="pétala p7"></span> <span class="pétala p8"></span> <span class="pétala p9"></span> <span class="pétala p10"></span>
+        <span class="pétala p11"></span> <span class="pétala p12"></span> <span class="pétala p13"></span> <span class="pétala p14"></span> <span class="pétala p15"></span>
+        <span class="pétala p16"></span> <span class="pétala p17"></span> <span class="pétala p18"></span> <span class="pétala p19"></span> <span class="pétala p20"></span>
+    </div>
+
+    <header class="hero" id="hero">
+        <div class="envelope-wrapper" id="envelope-wrapper">
+            <div class="envelope">
+                <div class="envelope-back"></div>
+                <div class="letter">
+                    <h1 class="names">Arthur <span class="amp">&</span> Elayne</h1>
+                    <p class="date">15 de Junho de 2026</p>
+                    <p class="verse">"Assim, eles já não são dois, mas sim uma só carne." <br> - Mateus 19:6</p>
+                    
+                    <button id="btn-see-details" class="btn-verso letter-btn">Visualizar convite completo</button>
+                </div>
+                <div class="envelope-front"></div>
+                <div class="envelope-flap"></div>
+                
+                <button id="btn-open-invitation" class="btn-seal pulse-glow">Abrir Convite</button>
+            </div>
+        </div>
+    </header>
+
+    <button id="btn-music" class="btn-music hidden">🎵 Pausar Música</button>
+
+    <main id="invitation-content" class="verso-content hidden-no-display">
+        
+        <nav class="floating-menu">
+            <a href="#nossa-historia">História</a>
+            <a href="#contagem">Faltam...</a>
+            <a href="#cerimonia">Cerimônia</a>
+            <a href="#galeria">Fotos</a>
+        </nav>
+
+        <section class="story story-verso" id="nossa-historia">
+            <h2>Nossa História</h2>
+            <div class="timeline ornament-title">
+                <div class="timeline-item">
+                    <h3>O Primeiro Encontro</h3>
+                    <p>Como a vida adora nos surpreender, nosso encontro aconteceu de uma forma que jamais imaginaríamos: durante uma partida de um jogo online. Em meio a uma simples partida de League of Legends, começamos a conversar e, pouco a pouco, percebemos algo inesperado: nós já nos conhecíamos. A partir daquele momento, tudo aconteceu naturalmente. Cada conversa nos aproximava ainda mais, e o que começou como um encontro casual transformou-se em horas de conversas intermináveis, risadas compartilhadas e uma conexão cada vez mais especial. Sem que percebêssemos, estávamos construindo uma amizade sólida que, com o tempo, floresceria no mais belo dos sentimentos: o amor.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>O Início da Nossa História</h3>
+                    <p>No dia 04/05/2021, tomamos coragem e decidimos dar um nome ao sentimento que já florescia em nossos corações. Foi nesse dia que nossa história começou a ser escrita de forma ainda mais especial. Naquele momento, as incertezas do futuro pouco importavam. Não pensávamos nos desafios que poderiam surgir pelo caminho; sonhávamos apenas com uma coisa: permanecer juntos dali em diante. Movidos pelo amor, pela esperança e pela certeza de que havíamos encontrado um no outro um porto seguro, demos o primeiro passo de uma jornada que transformaria nossas vidas para sempre.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>O Pedido</h3>
+                    <p>O "sim" mais importante de nossas vidas. No dia 20/10/2025, um dos momentos mais especiais de nossa história finalmente aconteceu. Após enfrentarmos desafios, superarmos dificuldades, compartilharmos lágrimas e multiplicarmos incontáveis momentos de alegria, chegou o instante que tanto aguardávamos. Naquele dia, nossos corações falaram mais alto, e o amor que construímos ao longo do tempo ganhou uma nova promessa. Não foi apenas um pedido; foi a confirmação de um sentimento verdadeiro, capaz de unir não somente nossas vidas, mas também nossas almas para toda a eternidade. Foi o começo de um novo capítulo, escrito com amor, cumplicidade, respeito e a certeza de que fomos feitos para caminhar juntos, lado a lado, em todos os dias que ainda virão.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="countdown-section ornament-title" id="contagem">
+            <h2>Faltam</h2>
+            <div class="countdown" id="countdown">
+                <div class="pulse-circle"><span id="days">00</span><p>Dias</p></div>
+                <div class="pulse-circle"><span id="hours">00</span><p>Horas</p></div>
+                <div class="pulse-circle"><span id="minutes">00</span><p>Minutos</p></div>
+                <div class="pulse-circle"><span id="seconds">00</span><p>Segundos</p></div>
+            </div>
+            <p class="countdown-subtitle">Para o nosso "Felizes para sempre" ✨</p>
+        </section>
+
+        <section class="location ornament-title" id="cerimonia">
+            <h2>A Cerimônia</h2>
+            <div class="location-details">
+                <p><strong>Data:</strong> 15 de Junho de 2026</p>
+                <p><strong>Horário:</strong> 08:00 da manhã</p>
+                <p><strong>Local:</strong> Lot. Deus é Fiel - Rua Projetada 3, 150<br>São Cristóvão - Arcoverde-PE</p>
+            </div>
+            <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3947.04092141913!2d-37.0684067!3d-8.3976361!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7a81b00770a7183%3A0x8a28c875f0c1258e!2sRua%20Projetada%2004%2C%20Quadra%20R%20-%20Loteamento%20Deus%20%C3%A9%20fiel!5e0!3m2!1spt-BR!2sbr!4v1780906279151!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+            <a href="https://www.google.com/maps/dir/?api=1&destination=-8.399750,-37.066972" target="_blank" class="btn">Traçar Rota no Mapa</a>
+        </section>
+
+        <section class="gallery ornament-title" id="galeria">
+            <h2>Nossos Momentos</h2>
+            <div class="gallery-grid">
+                <img src="img/foto1.jpg" alt="Foto do Casal 1" onerror="this.src='https://via.placeholder.com/300x300/fdf0f2/b76e79?text=Foto+1'">
+                <img src="img/foto2.jpg" alt="Foto do Casal 2" onerror="this.src='https://via.placeholder.com/300x300/fdf0f2/b76e79?text=Foto+2'">
+                <img src="img/foto3.jpg" alt="Foto do Casal 3" onerror="this.src='https://via.placeholder.com/300x300/fdf0f2/b76e79?text=Foto+3'">
+                <img src="img/foto4.jpg" alt="Foto do Casal 4" onerror="this.src='https://via.placeholder.com/300x300/fdf0f2/b76e79?text=Foto+4'">
+            </div>
+        </section>
+
+        <footer class="footer footer-verso">
+            <p>"Cada capítulo da nossa história nos trouxe até aqui. Será uma alegria compartilhar este momento tão especial com você."</p>
+            <h2 class="names-footer">Arthur & Elayne</h2>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
