@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    const weddingDate = new Date("Jun 15, 2026 08:00:00").getTime();
+    const weddingDate = new Date("Jun 15, 2026 13:00:00").getTime();
 
     const updateCountdown = setInterval(() => {
         const now = new Date().getTime();
