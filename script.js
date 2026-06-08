@@ -10,12 +10,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const bgMusic = document.getElementById("bg-music");
     const btnMusic = document.getElementById("btn-music");
 
-    // FASE 1: Clicar no Selo para abrir o Envelope (A Carta Sobe e Para)
+   
     btnOpenInvitation.addEventListener("click", () => {
-        // Ativa a animação do envelope e da carta
         envelopeWrapper.classList.add("open");
         
-        // Toca a música
         bgMusic.play().catch(error => {
             console.log("Autoplay bloqueado pelo navegador.");
             btnMusic.innerText = "🎵 Tocar Música";
@@ -23,20 +21,16 @@ document.addEventListener("DOMContentLoaded", () => {
         btnMusic.classList.remove("hidden");
     });
 
-    // FASE 2: Clicar em "Visualizar convite completo" na Carta
     btnSeeDetails.addEventListener("click", () => {
-        // 1. FAZ A TELA DO ENVELOPE SUMIR COM FADE
         hero.classList.add("fade-out");
         hero.classList.add("hidden");
         
         setTimeout(() => {
             hero.style.display = "none"; 
             
-            // 2. Libera a rolagem e o fundo de girassóis pastel
             document.body.classList.remove("no-scroll");
             document.body.classList.add("verso-active");
             
-            // 3. Mostra o Verso
             invitationContentVerso.classList.remove("hidden-no-display");
             invitationContentVerso.classList.add("active-scroll");
             
@@ -44,13 +38,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 startScrollAnimations();
             }, 100);
 
-            // Joga o convidado pro começo do Verso
             window.scrollTo({ top: 0, behavior: 'smooth' });
             
-        }, 1000); // Aguarda o fade out do envelope (1 segundo)
+        }, 1000);
     });
 
-    // Controle da música fixo
     btnMusic.addEventListener("click", () => {
         if (bgMusic.paused) {
             bgMusic.play();
@@ -61,7 +53,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Contagem Regressiva para 15 de Junho de 2026 às 08:00
     const weddingDate = new Date("Jun 15, 2026 08:00:00").getTime();
 
     const updateCountdown = setInterval(() => {
@@ -89,7 +80,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }, 1000);
 
-    // Lógica das Animações ao Rolar (Intersection Observer)
     function startScrollAnimations() {
         const observerOptions = {
             root: null, 

@@ -1,4 +1,4 @@
-/* Variáveis de Cores */
+
 :root {
     --bg-color: #fcf9f7;
     --text-dark: #3a3a3a;
@@ -24,7 +24,7 @@ body {
     position: relative;
 }
 
-/* O fundo girassol pastel SÓ aparece no Verso agora */
+
 body.verso-active::before {
     content: '';
     position: fixed;
@@ -38,7 +38,7 @@ body.verso-active::before {
     display: block;
 }
 
-/* Tipografia e Pétalas */
+
 h1, h2, h3, .names { font-family: var(--font-title); color: var(--rose-gold); font-weight: 400; }
 .pétalas-bg { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 9999; }
 .pétala { position: absolute; top: -80px; display: block; background-image: url('img/pétala.png'); background-size: contain; background-repeat: no-repeat; opacity: 0; animation: caindo linear infinite; }
@@ -64,9 +64,6 @@ h1, h2, h3, .names { font-family: var(--font-title); color: var(--rose-gold); fo
 .pétala.p19 { left: 88%; width: 55px; height: 55px; animation-duration: 9.5s; animation-delay: 1.8s; }
 .pétala.p20 { left: 96%; width: 31px; height: 31px; animation-duration: 6.5s; animation-delay: 4.2s; }
 
-/* =========================================
-   FASE 1 e 2: O ENVELOPE 3D E A CARTA
-   ========================================= */
 .hero {
     height: 100vh;
     display: flex;
@@ -175,7 +172,6 @@ h1, h2, h3, .names { font-family: var(--font-title); color: var(--rose-gold); fo
 
 .btn-seal:hover { background-color: #a05c66; transform: translate(-50%, -50%) scale(1.05); }
 
-/* Animações do Envelope Abrindo */
 .envelope-wrapper.open .envelope-flap {
     transform: rotateX(180deg);
 }
@@ -185,11 +181,10 @@ h1, h2, h3, .names { font-family: var(--font-title); color: var(--rose-gold); fo
     transform: translate(-50%, -50%) scale(0); 
 }
 .envelope-wrapper.open .letter {
-    transform: translateY(-200px); /* A carta sobe bastante e pára! */
-    z-index: 6; /* Fica acima da frente do envelope para o botão ser clicável */
+    transform: translateY(-200px); 
+    z-index: 6;
 }
 
-/* O Novo Botão da Carta */
 .btn-verso {
     background-color: var(--white);
     color: var(--rose-gold);
@@ -207,9 +202,9 @@ h1, h2, h3, .names { font-family: var(--font-title); color: var(--rose-gold); fo
 
 .letter-btn {
     margin-top: 20px;
-    opacity: 0; /* Invisível no começo */
+    opacity: 0; 
     pointer-events: none;
-    transition: opacity 1s ease 1.8s; /* Só aparece 1.8s depois, quando a carta já parou de subir */
+    transition: opacity 1s ease 1.8s;
 }
 
 .envelope-wrapper.open .letter-btn {
@@ -217,9 +212,6 @@ h1, h2, h3, .names { font-family: var(--font-title); color: var(--rose-gold); fo
     pointer-events: auto;
 }
 
-/* =========================================
-   FASE 3: O VERSO ROLEÁVEL
-   ========================================= */
 main.active-scroll {
     overflow-y: visible;
     height: auto;
